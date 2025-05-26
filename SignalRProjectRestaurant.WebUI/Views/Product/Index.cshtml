@@ -1,0 +1,78 @@
+﻿@model List<ResultProductDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+<div class="container-fluid">
+    <h4 class="page-title">Ürünler</h4>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <a class="btn btn-success" href="/Product/Create/"><i class="la la-plus-square"></i> Yeni Ürün Ekle</a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div style="font-size:small" class="card-sub">
+                        Listeli değerleri görebilir, ekleme silme ve güncelleme işlemlerini bu panelden gerçekleştirebilirsiniz.
+                    </div>
+                    <table style="text-align:center" class="table mt-3">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Görsel</th>
+                                <th scope="col">Ürün</th>
+                                <th scope="col">Açıklama</th>
+                                <th scope="col">Fiyat</th>
+                                <th scope="col">Kategori</th>
+                                <th scope="col">Aksiyon</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                count++;
+                                <tr>
+                                    <td>@count</td>
+                                    <td><img src="@item.ImageUrl" width="50px" height="Auto" /></td>
+                                    <td>@item.ProductName</td>
+                                    <td>
+                                        @if (item.Description.Length > 50)
+                                        {
+                                            @item.Description.Substring(0, 50)
+                                            ;
+                                        }
+                                        else
+                                        {
+                                            @item.Description.ToString()
+                                            ;
+                                        }
+                                    </td>
+                                    <td>@item.Price</td>
+                                    <td>@item.CategoryName</td>
+                                    <td>
+                                        <a href="/Product/ChangeStatus/@item.ProductId">
+                                            @if (item.ProductStatus == true)
+                                            {
+                                                <span class="btn btn-outline-success"><i class="la la-check"></i> Aktif</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="btn btn-outline-danger"><i class="la la-close"></i> Pasif</span>
+                                            }
+                                        </a>
+                                        <a class="btn btn-warning" href="/Product/Update/@item.ProductId"><i class="la la-edit"></i> Güncelle</a>
+                                        <a class="btn btn-danger" href="/Product/Delete/@item.ProductId"><i class="la la-trash"></i> Sil</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -12,5 +12,6 @@ namespace SignalR.DataAccessLayer.Abstract
     public interface IProductDAL : IGenericDAL<Product>
     {
         public List<ResultProductDto> GetProductWithCategories();
+        void ChangeStatus(int id);
     }
 }

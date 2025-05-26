@@ -20,6 +20,21 @@ namespace SignalR.DataAccessLayer.EntityFramework
 
         }
 
+        public void ChangeStatus(int id)
+        {
+            var context = new ProjectContext();
+            var value = context.Products.Find(id);
+            if (value.ProductStatus == true)
+            {
+                value.ProductStatus = false;
+            }
+            else
+            {
+                value.ProductStatus = true;
+            }
+            context.SaveChanges();
+        }
+
         public List<ResultProductDto> GetProductWithCategories()
         {
             var context = new ProjectContext();

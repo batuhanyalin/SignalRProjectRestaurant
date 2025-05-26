@@ -27,7 +27,7 @@ namespace SignalRProjectRestaurant.API.Controllers
             //var map = _mapper.Map<List<ResultProductDto>>(values);
             return Ok(values);
         }
-        [HttpGet("GetByIdProduct")]
+        [HttpGet("GetByIdProduct/{id}")]
         public IActionResult GetByIdProduct(int id)
         {
             var value = _ProductService.TGetById(id);
@@ -54,6 +54,12 @@ namespace SignalRProjectRestaurant.API.Controllers
             var value = _ProductService.TGetById(id);
             _ProductService.TDelete(value);
             return Ok("Veri başarıyla silindi.");
+        }
+        [HttpGet("ChangeStatus/{id}")]
+        public IActionResult ChangeStatus(int id)
+        {
+            _ProductService.TChangeStatus(id);
+            return Ok("Durum başarıyla güncellendi.");
         }
     }
 }

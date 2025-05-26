@@ -19,6 +19,11 @@ namespace SignalR.BusinessLayer.Concrete
             _ProductDAL = ProductDAL;
         }
 
+        public void TChangeStatus(int id)
+        {
+           _ProductDAL.ChangeStatus(id);
+        }
+
         public void TCreate(Product entity)
         {
             _ProductDAL.Create(entity);

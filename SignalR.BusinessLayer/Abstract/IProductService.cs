@@ -12,5 +12,6 @@ namespace SignalR.BusinessLayer.Abstract
     public interface IProductService : IGenericService<Product>
     {
         public List<ResultProductDto> TGetProductsWithCategories();
+        public void TChangeStatus(int id);
     }
 }
