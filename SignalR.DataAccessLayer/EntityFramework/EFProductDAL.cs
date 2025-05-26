@@ -1,0 +1,38 @@
+﻿using Microsoft.EntityFrameworkCore;
+using SignalR.DataAccessLayer.Abstract;
+using SignalR.DataAccessLayer.Context;
+using SignalR.DtoLayer.ProductDto;
+using SignalRProjectRestaurant.API.DataAccessLayer.Repositories;
+using SignalRProjectRestaurant.DataAccessLayer.Abstract;
+using SignalRProjectRestaurant.EntityLayer.Concrete;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SignalR.DataAccessLayer.EntityFramework
+{
+    public class EFProductDAL : GenericRepository<Product>, IProductDAL
+    {
+        public EFProductDAL(ProjectContext projectContext) : base(projectContext)
+        {
+
+        }
+
+        public List<ResultProductDto> GetProductWithCategories()
+        {
+            var context = new ProjectContext();
+            return context.Products.Include(x => x.Category).Select(y => new ResultProductDto
+            {
+                CategoryName = y.Category.CategoryName,
+                Description = y.Description,
+                ImageUrl = y.ImageUrl,
+                Price = y.Price,
+                ProductId = y.ProductId,
+                ProductName = y.ProductName,
+                ProductStatus = y.ProductStatus
+            }).ToList();
+        }
+    }
+}

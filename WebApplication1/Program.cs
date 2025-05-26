@@ -9,8 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ProjectContext>();
 builder.Services.AddAutoMapper(typeof(Program));
 
-builder.Services.AddScoped<IAboutService, AboutManager>();
-builder.Services.AddScoped<IAboutDAL, EFAboutDAL>();
+builder.Services.AddScoped<IAboutService,AboutManager>();
+builder.Services.AddScoped<IAboutDAL,EFAboutDAL>();
 
 builder.Services.AddScoped<IBookingService, BookingManager>();
 builder.Services.AddScoped<IBookingDAL, EFBookingDAL>();
