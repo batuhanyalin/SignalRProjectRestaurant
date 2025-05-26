@@ -24,8 +24,8 @@ namespace SignalRProjectRestaurant.API.Controllers
         public IActionResult GetProductList()
         {
             var values = _ProductService.TGetProductsWithCategories();
-            var map = _mapper.Map<List<ResultProductDto>>(values);
-            return Ok(map);
+            //var map = _mapper.Map<List<ResultProductDto>>(values);
+            return Ok(values);
         }
         [HttpGet("GetByIdProduct")]
         public IActionResult GetByIdProduct(int id)
