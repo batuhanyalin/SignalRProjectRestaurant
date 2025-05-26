@@ -1,5 +1,6 @@
 ﻿using SignalR.BusinessLayer.Abstract;
 using SignalR.DataAccessLayer.Abstract;
+using SignalR.DtoLayer.CategoryDto;
 using SignalRProjectRestaurant.EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,16 @@ namespace SignalR.BusinessLayer.Concrete
         public CategoryManager(ICategoryDAL categoryDAL)
         {
             _categoryDAL = categoryDAL;
+        }
+
+        public List<ResultCategoryWithProductCount> TCategoryListWithProduct()
+        {
+            return _categoryDAL.CategoryListWithProduct();
+        }
+
+        public void TCategoryStatusChange(int id)
+        {
+            _categoryDAL.CategoryStatusChange(id);
         }
 
         public void TCreate(Category entity)

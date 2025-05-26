@@ -1,4 +1,5 @@
-﻿using SignalRProjectRestaurant.BusinessLayer.Abstract;
+﻿using SignalR.DtoLayer.CategoryDto;
+using SignalRProjectRestaurant.BusinessLayer.Abstract;
 using SignalRProjectRestaurant.EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -10,5 +11,7 @@ namespace SignalR.BusinessLayer.Abstract
 {
     public interface ICategoryService:IGenericService<Category>
     {
+        public List<ResultCategoryWithProductCount> TCategoryListWithProduct();
+        public void TCategoryStatusChange(int id);
     }
 }

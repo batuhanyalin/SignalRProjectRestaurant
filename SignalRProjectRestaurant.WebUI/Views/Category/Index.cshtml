@@ -1,0 +1,63 @@
+﻿@using SignalR.DtoLayer.CategoryDto
+@model List<ResultCategoryWithProductCount>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+<div class="container-fluid">
+    <h4 class="page-title">Kategoriler</h4>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <a class="btn btn-success" href="/Category/Create/"><i class="la la-plus-square"></i> Yeni Kategori Ekle</a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div style="font-size:small" class="card-sub">
+                        Listeli değerleri görebilir, ekleme silme ve güncelleme işlemlerini bu panelden gerçekleştirebilirsiniz.
+                    </div>
+                    <table style="text-align:center" class="table mt-3">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Kategori</th>
+                                <th scope="col">Ürün Sayısı</th>
+                                <th scope="col">Aksiyon</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                count++;
+                                <tr>
+                                    <td>@count</td>
+                                    <td>@item.CategoryName</td>
+                                    <td><a href="/Product/GetByCategoryId/@item.CategoryId">@item.ProductCount</a></td>
+                                    <td><a href="/Category/ChangeStatus/@item.CategoryId">
+                                        @if (item.CategoryStatus == true)
+                                        {
+                                            <span class="btn btn-outline-success"><i class="la la-check"></i> Aktif</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="btn btn-outline-danger"><i class="la la-close"></i> Pasif</span>
+                                        }
+                                        </a>
+
+                                        <a class="btn btn-warning" href="/Category/Update/@item.CategoryId"><i class="la la-edit"></i> Güncelle</a>
+
+                                        <a class="btn btn-danger" href="/Category/Delete/@item.CategoryId"><i class="la la-trash"></i> Sil</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

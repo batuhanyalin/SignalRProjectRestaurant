@@ -8,5 +8,6 @@ namespace SignalRProjectRestaurant.WebUI.Controllers
         {
             return View();
         }
+
     }
 }

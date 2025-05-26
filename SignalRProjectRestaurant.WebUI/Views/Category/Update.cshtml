@@ -1,0 +1,44 @@
+﻿@model UpdateCategoryDto
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <form method="post">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Kategori Güncelle</div>
+                    </div>
+                    <div class="card-body">
+                        <input type="hidden" asp-for="CategoryId" />
+                        <div class="form-group">
+                            <label for="">Kategori Adı</label>
+                            <input asp-for="CategoryName" type="text" class="form-control">
+                            <small id="emailHelp" class="form-text text-muted">Boş geçilemez.</small>
+                        </div>
+                        <div class="form-check">
+                            <label>Kategori Durumu</label><br />
+                            <label class="form-radio-label">
+                                <input class="form-radio-input" type="radio" asp-for="CategoryStatus" value="True">
+                                <span class="form-radio-sign">Aktif</span>
+                            </label>
+                            <label class="form-radio-label ml-3">
+                                <input class="form-radio-input" type="radio" asp-for="CategoryStatus" value="False">
+                                <span class="form-radio-sign">Pasif</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="card-action">
+                        <button class="btn btn-success"><i class="la la-rotate-right"></i> Güncelle
+                        </button>
+                        <a href="/Category/Index" class="btn btn-danger"><i class="la la-reply"></i> Çıkış</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

@@ -8,7 +8,6 @@ namespace SignalRProjectRestaurant.API.DataAccessLayer.Repositories
     public class GenericRepository<T> : IGenericDAL<T> where T : class
     {
         private readonly ProjectContext _projectContext;
-
         public GenericRepository(ProjectContext projectContext)
         {
             _projectContext = projectContext;
@@ -39,6 +38,7 @@ namespace SignalRProjectRestaurant.API.DataAccessLayer.Repositories
         public void Update(T entity)
         {
            _projectContext.Update(entity);
+            _projectContext.SaveChanges();
         }
     }
 }
