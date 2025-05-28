@@ -1,0 +1,70 @@
+﻿@model List<ResultBookingDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+<div class="container-fluid">
+    <h4 class="page-title">Rezervasyonler</h4>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <a class="btn btn-success" href="/Booking/Create/"><i class="la la-plus-square"></i> Yeni Rezervasyon Ekle</a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div style="font-size:small" class="card-sub">
+                        Listeli değerleri görebilir, ekleme silme ve güncelleme işlemlerini bu panelden gerçekleştirebilirsiniz.
+                    </div>
+                    <table style="text-align:center" class="table mt-3">
+                        <thead>
+                            <tr class="badge-light">
+                                <th scope="col">#</th>
+                                <th scope="col">Ad</th>
+                                <th scope="col">Soyad</th>
+                                <th scope="col">Telefon</th>
+                                <th scope="col">E-posta</th>
+                                <th scope="col">Sayı</th>
+                                <th scope="col">Tarih</th>
+                                <th scope="col">Aksiyon</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                count++;
+                                <tr>
+                                    <td>@count</td>
+                                    <td>@item.Name</td>
+                                    <td>@item.Surname</td>
+                                    <td>@item.Phone</td>
+                                    <td>@item.Email</td>
+                                    <td>@item.PersonCount</td>
+                                    <td>@item.Date.ToShortDateString()</td>
+                                    <td>
+                                        @*                <a href="/Booking/ChangeStatus/@item.BookingId">
+                                            @if (item.BookingStatus == true)
+                                            {
+                                                <span class="btn btn-outline-success"><i class="la la-check"></i> Aktif</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="btn btn-outline-danger"><i class="la la-close"></i> Pasif</span>
+                                            }
+                                        </a> *@
+                                        <a class="btn btn-warning" href="/Booking/Update/@item.BookingId"><i class="la la-edit"></i> Güncelle</a>
+                                        <a class="btn btn-danger" href="/Booking/Delete/@item.BookingId"><i class="la la-trash"></i> Sil</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

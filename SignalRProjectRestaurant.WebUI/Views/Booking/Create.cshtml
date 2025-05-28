@@ -1,0 +1,71 @@
+﻿@model CreateBookingDto
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <form method="post">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Yeni Rezervasyon</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col col-md-6">
+                                <div class="form-group">
+                                    <label for="">Adı</label>
+                                    <input asp-for="Name" type="text" class="form-control">                             
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Soyadı</label>
+                                    <input asp-for="Surname" type="text" class="form-control">                            
+                                </div>
+                                <div class="form-group">
+                                    <label for="">E-posta</label>
+                                    <input asp-for="Email" type="text" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Telefon</label>
+                                    <input asp-for="Phone" type="text" class="form-control">
+                                </div>
+                             
+                            </div>
+                            <div class="col col-md-6">
+                                <div class="form-group">
+                                    <label for="">Kişi Sayısı</label>
+                                    <input asp-for="Surname" type="number" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Tarih</label>
+                                    <input asp-for="Date" type="date" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+  @*                       <div class="form-check">
+                            <label>Rezervasyon Durumu</label><br />
+                            <label class="form-radio-label">
+                                <input class="form-radio-input" type="radio" asp-for="BookingStatus" value="True" checked="">
+                                <span class="form-radio-sign">Aktif</span>
+                            </label>
+                            <label class="form-radio-label ml-3">
+                                <input class="form-radio-input" type="radio" asp-for="BookingStatus" value="False">
+                                <span class="form-radio-sign">Pasif</span>
+                            </label>
+                        </div> *@
+                    </div>
+                    <div class="card-action">
+                        <button class="btn btn-success"><i class="la la-save"></i> Kaydet</button>
+                        <a href="/Booking/Index" class="btn btn-danger"><i class="la la-reply"></i> Çıkış</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+

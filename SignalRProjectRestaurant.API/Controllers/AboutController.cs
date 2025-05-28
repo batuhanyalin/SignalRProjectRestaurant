@@ -27,7 +27,7 @@ namespace SignalRProjectRestaurant.API.Controllers
             var map = _mapper.Map<List<ResultAboutDto>>(values);
             return Ok(map);
         }
-        [HttpGet("GetByIdAbout")]
+        [HttpGet("GetByIdAbout/{id}")]
         public IActionResult GetByIdAbout(int id)
         {
             var value = _aboutService.TGetById(id);
@@ -48,7 +48,7 @@ namespace SignalRProjectRestaurant.API.Controllers
             _aboutService.TCreate(map);
             return Ok("Veri başarıyla kaydedildi.");
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteAbout(int id)
         {
             var value = _aboutService.TGetById(id);

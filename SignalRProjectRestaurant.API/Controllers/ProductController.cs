@@ -34,21 +34,21 @@ namespace SignalRProjectRestaurant.API.Controllers
             var map = _mapper.Map<GetByIdProductDto>(value);
             return Ok(map);
         }
-        [HttpPost]
+        [HttpPut]
         public IActionResult UpdateProduct(UpdateProductDto dto)
         {
             var map = _mapper.Map<Product>(dto);
             _ProductService.TUpdate(map);
             return Ok("Veri başarıyla güncellendi.");
         }
-        [HttpPut]
+        [HttpPost]
         public IActionResult CreateProduct(CreateProductDto dto)
         {
             var map = _mapper.Map<Product>(dto);
             _ProductService.TCreate(map);
             return Ok("Veri başarıyla kaydedildi.");
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteProduct(int id)
         {
             var value = _ProductService.TGetById(id);
