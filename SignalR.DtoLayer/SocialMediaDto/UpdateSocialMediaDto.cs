@@ -12,5 +12,6 @@ namespace SignalR.DtoLayer.SocialMediaDto
         public string Platform { get; set; }
         public string Logo { get; set; }
         public string LinkUrl { get; set; }
+        public bool Status { get; set; }
     }
 }

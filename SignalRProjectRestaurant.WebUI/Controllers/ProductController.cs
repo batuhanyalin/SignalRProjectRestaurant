@@ -161,7 +161,7 @@ namespace SignalRProjectRestaurant.WebUI.Controllers
             }
             else
             {
-                return View();
+                return RedirectToAction("Index");
             }
         }
     }

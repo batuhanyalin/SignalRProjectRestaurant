@@ -27,33 +27,39 @@ namespace SignalRProjectRestaurant.API.Controllers
             var map = _mapper.Map< List<ResultSocialMediaDto>>(values);
             return Ok(map);
         }
-        [HttpGet("GetByIdSocialMedia")]
+        [HttpGet("GetByIdSocialMedia/{id}")]
         public IActionResult GetByIdSocialMedia(int id)
         {
             var value = _SocialMediaService.TGetById(id);
             var map = _mapper.Map<GetByIdSocialMediaDto>(value);
             return Ok(map);
         }
-        [HttpPost]
+        [HttpPut]
         public IActionResult UpdateSocialMedia(UpdateSocialMediaDto dto)
         {
             var map = _mapper.Map<SocialMedia>(dto);
             _SocialMediaService.TUpdate(map);
             return Ok("Veri başarıyla güncellendi.");
         }
-        [HttpPut]
+        [HttpPost]
         public IActionResult CreateSocialMedia(CreateSocialMediaDto dto)
         {
             var map = _mapper.Map<SocialMedia>(dto);
             _SocialMediaService.TCreate(map);
             return Ok("Veri başarıyla kaydedildi.");
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteSocialMedia(int id)
         {
             var value = _SocialMediaService.TGetById(id);
             _SocialMediaService.TDelete(value);
             return Ok("Veri başarıyla silindi.");
+        }
+        [HttpGet("ChangeStatus/{id}")]
+        public IActionResult ChangeStatus(int id)
+        {
+            _SocialMediaService.TChangeStatus(id);
+            return Ok("Durum başarıyla güncellendi.");
         }
     }
 }

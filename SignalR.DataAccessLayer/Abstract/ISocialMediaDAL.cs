@@ -10,5 +10,6 @@ namespace SignalR.DataAccessLayer.Abstract
 {
     public interface ISocialMediaDAL:IGenericDAL<SocialMedia>
     {
+        void ChangeStatus(int id);
     }
 }

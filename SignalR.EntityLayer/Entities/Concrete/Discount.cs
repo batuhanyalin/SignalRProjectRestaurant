@@ -7,7 +7,6 @@
         public string Description { get; set; }
         public int Amount { get; set; }
         public string ImageUrl { get; set; }
-        public string LinkUrl { get; set; }
 
     }
 }

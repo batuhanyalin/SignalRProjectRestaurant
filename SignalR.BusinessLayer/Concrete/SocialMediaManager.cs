@@ -18,6 +18,11 @@ namespace SignalR.BusinessLayer.Concrete
             _SocialMediaDAL = SocialMediaDAL;
         }
 
+        public void TChangeStatus(int id)
+        {
+            _SocialMediaDAL.ChangeStatus(id);
+        }
+
         public void TCreate(SocialMedia entity)
         {
             _SocialMediaDAL.Create(entity);
@@ -30,12 +35,12 @@ namespace SignalR.BusinessLayer.Concrete
 
         public List<SocialMedia> TGetAll()
         {
-           return _SocialMediaDAL.GetListAll();
+            return _SocialMediaDAL.GetListAll();
         }
 
         public SocialMedia TGetById(int id)
         {
-           return _SocialMediaDAL.GetById(id);
+            return _SocialMediaDAL.GetById(id);
         }
 
         public void TUpdate(SocialMedia entity)

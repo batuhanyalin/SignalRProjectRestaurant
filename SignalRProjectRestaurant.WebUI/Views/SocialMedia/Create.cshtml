@@ -1,0 +1,59 @@
+﻿@model CreateSocialMediaDto
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <form method="post" enctype="multipart/form-data">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Yeni Sosyal Medya</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col col-md-4">
+                                <div class="form-group">
+                                    <label for="">Platform Adı</label>
+                                    <input asp-for="Platform" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col col-md-4">
+                                <div class="form-group">
+                                    <label for="">Logo</label>
+                                    <input asp-for="Logo" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col col-md-4">
+                                <label>Durum</label><br />
+                                <label class="form-radio-label">
+                                    <input class="form-radio-input" type="radio" asp-for="Status" value="True" checked="">
+                                    <span class="form-radio-sign">Aktif</span>
+                                </label>
+                                <label class="form-radio-label ml-3">
+                                    <input class="form-radio-input" type="radio" asp-for="Status" value="False">
+                                    <span class="form-radio-sign">Pasif</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col col-md-12">
+                                <div class="form-group">
+                                    <label for="">Link Url</label>
+                                    <input asp-for="LinkUrl" type="text" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-action">
+                        <button class="btn btn-success"><i class="la la-save"></i> Kaydet</button>
+                        <a href="/SocialMedia/Index" class="btn btn-danger"><i class="la la-reply"></i> Çıkış</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

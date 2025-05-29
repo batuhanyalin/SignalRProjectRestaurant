@@ -1,27 +1,30 @@
-﻿@model List<ResultAboutDto>
+﻿@model List<ResultTestimonialDto>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
 }
 <div class="container-fluid">
+    <h4 class="page-title">Referanslar</h4>
     <div class="row">
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
                     <div class="card-title">
-                        <span>Yeni Kategori Ekle</span>
+                        <a class="btn btn-success" href="/Testimonial/Create/"><i class="la la-plus-square"></i> Yeni Referans Ekle</a>
                     </div>
                 </div>
                 <div class="card-body">
                     <div style="font-size:small" class="card-sub">
-                    Hakkında bilgisi silinemez, yeni hakkında eklenemez, yalnızca güncelleyebilirsiniz.
+                        Listeli değerleri görebilir, ekleme silme ve güncelleme işlemlerini bu panelden gerçekleştirebilirsiniz.
                     </div>
                     <table style="text-align:center" class="table mt-3">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Görsel</th>
-                                <th scope="col">Başlık</th>
+                                <th scope="col">Fotoğraf</th>
+                                <th scope="col">Adı Soyadı</th>
+                                <th scope="col">Ünvan</th>
                                 <th scope="col">Açıklama</th>
                                 <th scope="col">Aksiyon</th>
                             </tr>
@@ -29,14 +32,15 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
+                                count++;
                                 <tr>
-                                    <td>@item.AboutId</td>
-                                    <td><img width="200px" style="border-radius:5px" src="@item.ImageUrl" /></td>                                   
+                                    <td>@count</td>
+                                    <td><img src="@item.ImageUrl" width="50px" height="Auto" /></td>
+                                    <td>@item.Name @item.Surname</td>
                                     <td>@item.Title</td>
                                     <td>
-                                        @if (@item.Description.Length > 50)
+                                        @if (item.Description.Length > 50)
                                         {
-
                                             @item.Description.Substring(0, 50)
                                             ;
                                         }
@@ -45,9 +49,12 @@
                                             @item.Description.ToString()
                                             ;
                                         }
+
                                     </td>
                                     <td>
-                                        <a class="btn btn-warning" href="/About/Update/"><i class="la la-edit"></i> Güncelle</a>
+                                        <a class="btn btn-warning" href="/Testimonial/Update/@item.TestimonialId"><i class="la la-edit"></i> Güncelle</a>
+
+                                        <a class="btn btn-danger" href="/Testimonial/Delete/@item.TestimonialId"><i class="la la-trash"></i> Sil</a>
                                     </td>
                                 </tr>
                             }
@@ -58,3 +65,4 @@
         </div>
     </div>
 </div>
+

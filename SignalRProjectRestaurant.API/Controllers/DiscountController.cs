@@ -27,28 +27,28 @@ namespace SignalRProjectRestaurant.API.Controllers
             var map = _mapper.Map< List<ResultDiscountDto>>(values);
             return Ok(map);
         }
-        [HttpGet("GetByIdDiscount")]
+        [HttpGet("GetByIdDiscount/{id}")]
         public IActionResult GetByIdDiscount(int id)
         {
             var value = _DiscountService.TGetById(id);
             var map = _mapper.Map<GetByIdDiscountDto>(value);
             return Ok(map);
         }
-        [HttpPost]
+        [HttpPut]
         public IActionResult UpdateDiscount(UpdateDiscountDto dto)
         {
             var map = _mapper.Map<Discount>(dto);
             _DiscountService.TUpdate(map);
             return Ok("Veri başarıyla güncellendi.");
         }
-        [HttpPut]
+        [HttpPost]
         public IActionResult CreateDiscount(CreateDiscountDto dto)
         {
             var map = _mapper.Map<Discount>(dto);
             _DiscountService.TCreate(map);
             return Ok("Veri başarıyla kaydedildi.");
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteDiscount(int id)
         {
             var value = _DiscountService.TGetById(id);

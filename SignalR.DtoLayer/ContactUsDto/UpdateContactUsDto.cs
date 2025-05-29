@@ -12,5 +12,6 @@ namespace SignalR.DtoLayer.ContactUsDto
         public string Location { get; set; }
         public string Tel { get; set; }
         public string Mail { get; set; }
+        public string FooterDescription { get; set; }
     }
 }

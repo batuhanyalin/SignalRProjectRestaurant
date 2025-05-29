@@ -1,0 +1,57 @@
+﻿@model UpdateContactUsDto
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <form method="post">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">İletişim Bilgileri Güncelle</div>
+                    </div>
+                    <div class="card-body">
+                        <input type="hidden" asp-for="ContactUsId" />
+                        <div class="row">
+                            <div class="col col-md-4">
+                                <div class="form-group">
+                                    <label for="">Lokasyon</label>
+                                    <input type="text" asp-for="Location" required class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col col-md-4">
+                                <div class="form-group">
+                                    <label for="">Tel</label>
+                                    <input type="text" asp-for="Tel" required class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col col-md-4">
+                                <div class="form-group">
+                                    <label for="">Mail</label>
+                                    <input type="email" asp-for="Mail" required class="form-control" />
+                                </div>
+                            </div>
+                      </div>
+                        <div class="row">
+                            <div class="col col-md-12">
+                                <div class="form-group">
+                                    <label for="">Açıklama</label>
+                                    <textarea asp-for="FooterDescription" required class="form-control" style="height:200px"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-action">
+                        <button class="btn btn-success">
+                            <i class="la la-rotate-right"></i> Güncelle
+                        </button>
+                        <a href="/Dashboard/Index" class="btn btn-danger"><i class="la la-reply"></i> Çıkış</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

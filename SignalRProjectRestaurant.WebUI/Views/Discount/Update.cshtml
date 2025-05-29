@@ -1,0 +1,59 @@
+﻿@model UpdateDiscountDto
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <form method="post" enctype="multipart/form-data">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">İndirimli Ürün Güncelle</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">                       
+                            <div class="col col-md-4">
+                                <label>Mevcut Görsel</label><br />
+                                <img height="100px" src="@Model.ImageUrl" />
+                            </div>
+                            <div class="col col-md-4">
+                                <label for="">Görsel</label><br />
+                                <label for="upload" class="btn btn-outline-secondary me-2 mb-4" tabindex="0">
+                                    <span class="d-none d-sm-block"><i class="la la-upload"></i> Yükle</span>
+                                    <input type="file" name="ImageUpload" id="upload" hidden accept="image/png, image/jpeg" />
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col col-md-4">
+                                <div class="form-group">
+                                    <label for="">Ürün Adı</label>
+                                    <input asp-for="Title" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col col-md-4">
+                                <div class="form-group">
+                                    <label for="">İndirim Oranı</label>
+                                    <input asp-for="Amount" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col col-md-4">
+                                <div class="form-group">
+                                    <label for="">Açıklama</label>
+                                    <input asp-for="Description" type="text" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-action">
+                        <button class="btn btn-success"><i class="la la-save"></i> Kaydet</button>
+                        <a href="/Discount/Index" class="btn btn-danger"><i class="la la-reply"></i> Çıkış</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

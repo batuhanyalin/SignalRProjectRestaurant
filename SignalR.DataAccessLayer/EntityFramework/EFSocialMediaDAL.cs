@@ -15,7 +15,22 @@ namespace SignalR.DataAccessLayer.EntityFramework
     {
         public EFSocialMediaDAL(ProjectContext projectContext) : base(projectContext)
         {
-          
+
+        }
+
+        public void ChangeStatus(int id)
+        {
+            var context = new ProjectContext();
+            var value = context.SocialMedias.Find(id);
+            if (value.Status == true)
+            {
+                value.Status = false;
+            }
+            else
+            {
+                value.Status = true;
+            }
+            context.SaveChanges();
         }
     }
 }

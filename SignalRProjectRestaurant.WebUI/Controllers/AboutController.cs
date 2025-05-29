@@ -16,19 +16,6 @@ namespace SignalRProjectRestaurant.WebUI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Index()
-        {
-            var clinet = _httpClientFactory.CreateClient();
-            var responseMessage = await clinet.GetAsync("https://localhost:7197/api/About");
-            if (responseMessage.IsSuccessStatusCode)
-            {
-                var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultAboutDto>>(jsonData);
-                return View(values);
-            }
-            return View();
-        }
-        [HttpGet]
         public async Task<IActionResult> Update()
         {
             var client = _httpClientFactory.CreateClient();
@@ -45,7 +32,7 @@ namespace SignalRProjectRestaurant.WebUI.Controllers
                 var values = JsonConvert.DeserializeObject<UpdateAboutDto>(jsonData);
                 return View(values);
             }
-            return View("Index");
+            return RedirectToAction("Index", "Dashboard");
         }
         [HttpPost]
         public async Task<IActionResult> Update(UpdateAboutDto dto, IFormFile ImageUpload)
@@ -69,9 +56,9 @@ namespace SignalRProjectRestaurant.WebUI.Controllers
             var responseMessage = await client.PutAsync("https://localhost:7197/api/About/", stringContent);
             if (responseMessage.IsSuccessStatusCode)
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Dashboard");
             }
-            return RedirectToAction("Update");
+            return RedirectToAction("Index", "Dashboard");
         }
     }
 }

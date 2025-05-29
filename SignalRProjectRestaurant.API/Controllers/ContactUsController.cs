@@ -27,28 +27,28 @@ namespace SignalRProjectRestaurant.API.Controllers
             var map = _mapper.Map< List<ResultContactUsDto>>(values);
             return Ok(map);
         }
-        [HttpGet("GetByIdContactUs")]
+        [HttpGet("GetByIdContactUs/{id}")]
         public IActionResult GetByIdContactUs(int id)
         {
             var value = _ContactUsService.TGetById(id);
             var map = _mapper.Map<GetByIdContactUsDto>(value);
             return Ok(map);
         }
-        [HttpPost]
+        [HttpPut]
         public IActionResult UpdateContactUs(UpdateContactUsDto dto)
         {
             var map = _mapper.Map<ContactUs>(dto);
             _ContactUsService.TUpdate(map);
             return Ok("Veri başarıyla güncellendi.");
         }
-        [HttpPut]
+        [HttpPost]
         public IActionResult CreateContactUs(CreateContactUsDto dto)
         {
             var map = _mapper.Map<ContactUs>(dto);
             _ContactUsService.TCreate(map);
             return Ok("Veri başarıyla kaydedildi.");
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteContactUs(int id)
         {
             var value = _ContactUsService.TGetById(id);
