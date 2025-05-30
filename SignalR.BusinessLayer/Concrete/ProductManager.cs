@@ -19,6 +19,16 @@ namespace SignalR.BusinessLayer.Concrete
             _ProductDAL = ProductDAL;
         }
 
+        public decimal TAverageHamburgerPrice()
+        {
+           return _ProductDAL.AverageHamburgerPrice();
+        }
+
+        public decimal TAveragePrice()
+        {
+           return _ProductDAL.AveragePrice();
+        }
+
         public void TChangeStatus(int id)
         {
            _ProductDAL.ChangeStatus(id);
@@ -47,6 +57,31 @@ namespace SignalR.BusinessLayer.Concrete
         public List<ResultProductDto> TGetProductsWithCategories()
         {
             return _ProductDAL.GetProductWithCategories();
+        }
+
+        public Product TLeastPriceProduct()
+        {
+            return _ProductDAL.LeastPriceProduct();
+        }
+
+        public Product TMostPriceProduct()
+        {
+            return _ProductDAL.MostPriceProduct();
+        }
+
+        public int TProductCount()
+        {
+           return _ProductDAL.ProductCount();
+        }
+
+        public int TProductCountByCategoryNameDrink()
+        {
+            return _ProductDAL.ProductCountByCategoryNameDrink();
+        }
+
+        public int TProductCountByCategoryNameHamburger()
+        {
+            return _ProductDAL.ProductCountByCategoryNameHamburger();
         }
 
         public void TUpdate(Product entity)

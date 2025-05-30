@@ -3,11 +3,25 @@ using SignalR.BusinessLayer.Concrete;
 using SignalR.DataAccessLayer.Abstract;
 using SignalR.DataAccessLayer.Context;
 using SignalR.DataAccessLayer.EntityFramework;
+using SignalRProjectRestaurant.API.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<ProjectContext>();
 builder.Services.AddAutoMapper(typeof(Program));
+
+builder.Services.AddCors(opt =>
+{
+    opt.AddPolicy("CorsPolicy", builder =>
+    {
+        builder.AllowAnyHeader()
+        .AllowAnyMethod()
+        .AllowCredentials()
+        .SetIsOriginAllowed((host) => true);
+    });
+});
+builder.Services.AddSignalR();
+
 
 builder.Services.AddScoped<IAboutService, AboutManager>();
 builder.Services.AddScoped<IAboutDAL, EFAboutDAL>();
@@ -56,9 +70,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseCors("CorsPolicy");
 app.UseAuthorization();
 
 app.MapControllers();
-
+app.MapHub<SignalRHub>("/signalrhub");
 app.Run();

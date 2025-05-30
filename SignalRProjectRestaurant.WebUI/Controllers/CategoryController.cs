@@ -91,7 +91,6 @@ namespace SignalRProjectRestaurant.WebUI.Controllers
             }
 
         }
-
         public async Task<IActionResult> ChangeStatus(int id)
         {
             var client = _httpClientFactory.CreateClient();
@@ -104,10 +103,6 @@ namespace SignalRProjectRestaurant.WebUI.Controllers
             {
                 return View();
             }
-        }
-        public IActionResult GetById()
-        {
-            return View();
         }
     }
 }

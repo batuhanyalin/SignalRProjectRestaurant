@@ -61,5 +61,42 @@ namespace SignalRProjectRestaurant.API.Controllers
             _ProductService.TChangeStatus(id);
             return Ok("Durum başarıyla güncellendi.");
         }
+
+        [HttpGet("ProductCount")]
+        public IActionResult ProductCount()
+        {   
+            return Ok(_ProductService.TProductCount());
+        }
+        [HttpGet("ProductCountByCategoryNameHamburger")]
+        public IActionResult ProductCountByCategoryNameHamburger()
+        {
+            return Ok(_ProductService.TProductCountByCategoryNameHamburger());
+        }
+        [HttpGet("ProductCountByCategoryNameDrink")]
+        public IActionResult ProductCountByCategoryNameDrink()
+        {
+            return Ok(_ProductService.TProductCountByCategoryNameDrink());
+        }
+
+        [HttpGet("MostPriceProduct")]
+        public IActionResult MostPriceProduct()
+        {
+            return Ok(_ProductService.TMostPriceProduct());
+        }
+        [HttpGet("LeastPriceProduct")]
+        public IActionResult LeastPriceProduct()
+        {
+            return Ok(_ProductService.TLeastPriceProduct());
+        }
+        [HttpGet("AverageHamburgerPrice")]
+        public IActionResult AverageHamburgerPrice()
+        {
+            return Ok(_ProductService.TAverageHamburgerPrice());
+        }
+        [HttpGet("AveragePrice")]
+        public IActionResult AveragePrice()
+        {
+            return Ok(_ProductService.TAveragePrice());
+        }
     }
 }

@@ -9,9 +9,13 @@ using System.Threading.Tasks;
 
 namespace SignalR.DataAccessLayer.Abstract
 {
-    public interface ICategoryDAL:IGenericDAL<Category>
+    public interface ICategoryDAL : IGenericDAL<Category>
     {
         public List<ResultCategoryWithProductCount> CategoryListWithProduct();
         public void CategoryStatusChange(int id);
+        public int CategoryCount();
+        int ActiveCategoryCount();
+        int PassiveCategoryCount();
+
     }
 }

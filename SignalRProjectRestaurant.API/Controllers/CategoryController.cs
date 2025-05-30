@@ -69,5 +69,21 @@ namespace SignalRProjectRestaurant.API.Controllers
             _CategoryService.TCategoryStatusChange(id);
             return Ok("Durum başarıyla güncellendi.");
         }
+        [HttpGet("CategoryCount")]
+        public IActionResult CategoryCount()
+        {
+
+            return Ok(_CategoryService.TCategoryCount());
+        }
+        [HttpGet("ActiveCategoryCount")]
+        public IActionResult ActiveCategoryCount()
+        {
+            return Ok(_CategoryService.TActiveCategoryCount());
+        }
+        [HttpGet("PassiveCategoryCount")]
+        public IActionResult PassiveCategoryCount()
+        {
+            return Ok(_CategoryService.TPassiveCategoryCount());
+        }
     }
 }

@@ -13,5 +13,8 @@ namespace SignalR.BusinessLayer.Abstract
     {
         public List<ResultCategoryWithProductCount> TCategoryListWithProduct();
         public void TCategoryStatusChange(int id);
+        public int TCategoryCount();
+        int TActiveCategoryCount();
+        int TPassiveCategoryCount();
     }
 }

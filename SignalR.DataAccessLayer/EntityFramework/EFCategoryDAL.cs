@@ -20,6 +20,20 @@ namespace SignalR.DataAccessLayer.EntityFramework
 
         }
 
+        public int ActiveCategoryCount()
+        {
+            using var context = new ProjectContext();
+
+            return context.Categories.Count(x => x.CategoryStatus == true);
+        }
+
+        public int CategoryCount()
+        {
+            using var context = new ProjectContext();
+            return context.Categories.Count();
+
+        }
+
         public List<ResultCategoryWithProductCount> CategoryListWithProduct()
         {
             var context = new ProjectContext();
@@ -46,6 +60,12 @@ namespace SignalR.DataAccessLayer.EntityFramework
                 value.CategoryStatus = true;
             }
             projectContext.SaveChanges();
+        }
+
+        public int PassiveCategoryCount()
+        {
+            using var context = new ProjectContext();
+            return context.Categories.Count(x => x.CategoryStatus == false);
         }
     }
 }
