@@ -2,7 +2,7 @@
 
 namespace SignalRProjectRestaurant.WebUI.ViewComponents
 {
-    public class _aDashboardStatisticCardsComponentPartial : ViewComponent
+    public class _aStatisticCardsComponentPartial : ViewComponent
     {
         public IViewComponentResult Invoke()
         {

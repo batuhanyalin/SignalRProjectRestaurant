@@ -39,3 +39,88 @@
 		});
 	});
 </script>
+
+@* SignalR Configuration *@
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+<script src="~/lib/microsoft/signalr/dist/browser/signalr.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(()=>{
+
+                      var connection=new signalR.HubConnectionBuilder().withUrl("https://localhost:7197/signalrhub")
+                      .build();
+
+                      $("#connectionStatus").text(connection.state);
+
+                      connection.start().then(()=>{
+                          $("#connectionStatus").text(connection.state);
+                          setInterval(()=>{
+                 connection.invoke("SendStatistics");
+
+
+                          },1000);
+
+                      }).catch((err)=>{console.log(err)});
+
+                       connection.on("ReceiveProductCount",(value)=>{
+                           $("#productcount").text(value);
+                       });
+
+                       connection.on("ReceiveCategoryCount",(value)=>{
+                           $("#categorycount").text(value);
+                       });
+                       connection.on("ActiveCategoryCount",(value)=>{
+                           $("#activecategorycount").text(value);
+                       });
+
+                       connection.on("PassiveCategoryCount",(value)=>{
+                           $("#passivecategorycount").text(value);
+                       });
+
+                       connection.on("ProductCountByCategoryNameHamburger",(value)=>{
+                           $("#productbycategoryhamburgercount").text(value);
+                       });
+
+                       connection.on("ProductCountByCategoryNameDrink",(value)=>{
+                           $("#productbycategorydrinkcount").text(value);
+                       });
+
+                      connection.on("ReceiveAveragePrice",(value)=>{
+                           $("#averageprice").text(value);
+                       });
+                         connection.on("ReceiveMostPriceProduct",(value)=>{
+                           $("#mostpriceproduct").text(value);
+                       });
+                         connection.on("ReceiveLeastPriceProduct",(value)=>{
+                           $("#leastpriceproduct").text(value);
+                       });
+                          connection.on("ReceiveAverageHamburgerPrice",(value)=>{
+                           $("#averagehamburgerprice").text(value);
+                       });
+                             connection.on("ReceiveTotalOrderCount",(value)=>{
+                           $("#totalordercount").text(value);
+                       });
+                             connection.on("ReceiveActiveOrderCount",(value)=>{
+                           $("#activeordercount").text(value);
+                       });
+                             connection.on("ReceivePassiveOrderCount",(value)=>{
+                           $("#passiveordercount").text(value);
+                       });
+                             connection.on("ReceiveLastOrderPrice",(value)=>{
+                           $("#lastorderprice").text(value);
+                       });
+                               connection.on("ReceiveTodayTotalPrice",(value)=>{
+                           $("#todaytotalprice").text(value);
+                       });
+                        connection.on("ReceiveClientTableCount",(value)=>{
+                           $("#clienttablecount").text(value);
+                       });
+                          connection.on("ReceiveTotalMoneyCaseAmount",(value)=>{
+                           $("#totalmoneycaseamount").text(value);
+                       });
+                 });
+
+</script>

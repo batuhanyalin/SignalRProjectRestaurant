@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SignalR.EntityLayer.Entities.Concrete;
 using SignalRProjectRestaurant.EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace SignalR.DataAccessLayer.Context
         {
             optionsBuilder.UseSqlServer("Server=.\\SQLEXPRESS;initial catalog=SignalRProjectRestaurant;integrated security=true");
         }
+  
         public DbSet<About> Abouts { get; set; }
         public DbSet<Booking> Bookings { get; set; }
         public DbSet<Category> Categories { get; set; }
@@ -24,5 +26,9 @@ namespace SignalR.DataAccessLayer.Context
         public DbSet<Slider> Sliders { get; set; }
         public DbSet<SocialMedia> SocialMedias { get; set; }
         public DbSet<Testimonial> Testimonials { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
+        public DbSet<MoneyCase> MoneyCases { get; set; }
+        public DbSet<ClientTable> ClientTables { get; set; }
     }
 }

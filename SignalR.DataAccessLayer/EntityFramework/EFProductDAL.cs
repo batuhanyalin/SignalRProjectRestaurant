@@ -25,7 +25,12 @@ namespace SignalR.DataAccessLayer.EntityFramework
             using var context = new ProjectContext();
 
             var value = context.Products.Where(x => x.Category.CategoryName == "Hamburger").Select(x => x.Price).ToList();
-            return value.Average();
+            if (value.Count > 0)
+            {
+                return value.Average();
+            }
+            else { return 0; }
+
 
         }
 
@@ -33,7 +38,16 @@ namespace SignalR.DataAccessLayer.EntityFramework
         {
             using var context = new ProjectContext();
 
-            return context.Products.Average(x => x.Price);
+            var value = context.Products.Average(x => x.Price);
+            if (value == null)
+            {
+                value = 0;
+                return value;
+            }
+            else
+            {
+                return value;
+            }
 
         }
 

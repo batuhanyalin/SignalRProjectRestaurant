@@ -1,0 +1,12 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="container-fluid">
+    <h4 class="page-title">Anlık İstatistik Sayfası</h4>
+    <!--Statistic Cars-->
+    @await Component.InvokeAsync("_aStatisticCardsComponentPartial")
+</div>
+

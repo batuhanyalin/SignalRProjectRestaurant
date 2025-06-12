@@ -1,4 +1,6 @@
-﻿namespace SignalRProjectRestaurant.EntityLayer.Concrete
+﻿using SignalR.EntityLayer.Entities.Concrete;
+
+namespace SignalRProjectRestaurant.EntityLayer.Concrete
 {
     public class Product
     {
@@ -10,6 +12,7 @@
         public decimal Price { get; set; }
         public int CategoryId { get; set; }
         public Category Category { get; set; }
-       
+        public List<OrderDetail> OrderDetails { get; set; }
+
     }
 }

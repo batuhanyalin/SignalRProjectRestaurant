@@ -2,7 +2,7 @@
 
 namespace SignalRProjectRestaurant.WebUI.Controllers
 {
-    public class DashboardController : Controller
+    public class StatisticsController : Controller
     {
         public IActionResult Index()
         {

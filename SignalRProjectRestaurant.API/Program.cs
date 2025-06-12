@@ -53,6 +53,18 @@ builder.Services.AddScoped<ISocialMediaDAL, EFSocialMediaDAL>();
 builder.Services.AddScoped<ITestimonialService, TestimonialManager>();
 builder.Services.AddScoped<ITestimonialDAL, EFTestimonialDAL>();
 
+builder.Services.AddScoped<IOrderService, OrderManager>();
+builder.Services.AddScoped<IOrderDAL, EFOrderDAL>();
+
+builder.Services.AddScoped<IOrderDetailService, OrderDetailManager>();
+builder.Services.AddScoped<IOrderDetailDAL, EFOrderDetailDAL>();
+
+builder.Services.AddScoped<IMoneyCaseService, MoneyCaseManager>();
+builder.Services.AddScoped<IMoneyCaseDAL, EFMoneyCaseDAL>();
+
+builder.Services.AddScoped<IClientTableService, ClientTableManager>();
+builder.Services.AddScoped<IClientTableDAL, EFClientTableDAL>();
+
 // Add services to the container.
 
 builder.Services.AddControllers();
