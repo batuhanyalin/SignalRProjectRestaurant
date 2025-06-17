@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    @await Component.InvokeAsync("_uiHeadComponentPartial")
+
+</head>
+
+<body>
+
+    <div class="hero_area">
+        <div class="bg-box">
+            <img src="~/Templates/feane-1.0.0/images/hero-bg.jpg" alt="">
+        </div>
+        <!-- header section strats -->
+        @await Component.InvokeAsync("_uiNavBarComponentPartial")  
+        <!-- end header section -->
+        <!-- slider section -->
+        @await Component.InvokeAsync("_uiSliderComponentPartial")
+        <!-- end slider section -->
+    </div>
+    @RenderBody()
+    <!-- offer section -->
+    @await Component.InvokeAsync("_uiOfferComponentPartial")
+    <!-- end offer section -->
+    <!-- food section -->
+    @await Component.InvokeAsync("_uiOurMenuComponentPartial")
+    <!-- end food section -->
+    <!-- about section -->
+    @await Component.InvokeAsync("_uiAboutComponentPartial")
+    <!-- end about section -->
+    <!-- book section -->
+    @await Component.InvokeAsync("_uiBookTableComponentPartial")
+    <!-- end book section -->
+    <!-- client section -->
+    @await Component.InvokeAsync("_uiTestimonialComponentPartial")
+    <!-- end client section -->
+    <!-- footer section -->
+    @await Component.InvokeAsync("_uiFooterComponentPartial")
+    <!-- footer section -->
+    @await Component.InvokeAsync("_uiScriptsComponentPartial")
+</body>
+
+</html>

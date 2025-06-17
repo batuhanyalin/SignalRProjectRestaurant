@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="ViewComponents\UILayoutComponents\" />
     <Folder Include="wwwroot\images\discountProduct\" />
     <Folder Include="wwwroot\images\testimonials\" />
     <Folder Include="wwwroot\images\pages\" />

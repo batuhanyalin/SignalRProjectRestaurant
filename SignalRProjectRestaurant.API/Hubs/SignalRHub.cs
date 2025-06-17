@@ -71,51 +71,11 @@ namespace SignalRProjectRestaurant.API.Hubs
 
 
 
-        public async Task DashboardStatistics()
+        public async Task SendProgress()
         {
-            var category1 = _categoryService.TCategoryCount();
-            var category2 = _categoryService.TActiveCategoryCount();
-            var category3 = _categoryService.TPassiveCategoryCount();
-            var clientTable1 = _clientTableService.TClientTableCount();
-            var moneyCase1 = _moneyCaseService.TTotalMoneyCaseAmount();
-            var order1 = _orderService.TTotalOrderCount();
-            var order2 = _orderService.TActiveOrderCount();
-            var order3 = _orderService.TPassiveOrderCount();
-            var order4 = _orderService.TLastOrderPrice();
-            var order5 = _orderService.TTodayTotalPrice();
+            var moneyCase1= _moneyCaseService.TTotalMoneyCaseAmount;
 
-
-            var product1 = _productService.TProductCount();
-            var product2 = _productService.TProductCountByCategoryNameHamburger();
-            var product3 = _productService.TProductCountByCategoryNameDrink();
-            var product4 = _productService.TMostPriceProduct();
-            var product5 = _productService.TLeastPriceProduct();
-            var product6 = _productService.TAveragePrice();
-            var product7 = _productService.TAverageHamburgerPrice();
-
-            await Clients.All.SendAsync("ActiveCategoryCount", category1);
-            await Clients.All.SendAsync("CategoryCount", category2);
-            await Clients.All.SendAsync("PassiveCategoryCount", category3);
-
-
-            await Clients.All.SendAsync("ClientTableCount", clientTable1);
-
-            await Clients.All.SendAsync("TotalMoneyCaseAmount", moneyCase1);
-
-            await Clients.All.SendAsync("TotalOrderCount", order1);
-            await Clients.All.SendAsync("ActiveOrderCount", order2);
-            await Clients.All.SendAsync("PassiveOrderCount", order3);
-            await Clients.All.SendAsync("LastOrderPrice", order4);
-            await Clients.All.SendAsync("TodayTotalPrice", order5);
-
-            await Clients.All.SendAsync("ProductCount", product1);
-            await Clients.All.SendAsync("ProductCountByCategoryNameHamburger", product2);
-            await Clients.All.SendAsync("ProductCountByCategoryNameDrink", product3);
-            await Clients.All.SendAsync("MostPriceProduct", product4);
-            await Clients.All.SendAsync("LeastPriceProduct", product5);
-            await Clients.All.SendAsync("AveragePrice", product6);
-            await Clients.All.SendAsync("AverageHamburgerPrice", product7);
-
+            await Clients.All.SendAsync("Receive", moneyCase1);
         }
     }
 }
